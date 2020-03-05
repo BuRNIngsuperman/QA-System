@@ -20,11 +20,18 @@ public interface UserMapper {
 
 
     /**
-     * 根据id选择用户
+     * 根据id查询用户
      * @param id
      * @return
      */
     User selectById(int id);
+
+    /**
+     * 根据用户名查询用户
+     * @param name
+     * @return
+     */
+    User selectByName(String name);
 
     /**
      * 更改密码

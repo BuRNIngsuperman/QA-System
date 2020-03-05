@@ -14,6 +14,14 @@
         where id = #{id}
     </select>
 
+    <select id="selectByName" parameterType="String" resultType="com.example.wenda.model.User">
+        SELECT
+        <include refid="columnFields"/>
+        FROM
+        <include refid="table"/>
+        where name = #{name}
+    </select>
+
     <insert id="addUser" parameterType="com.example.wenda.model.User">
         insert into
         <include refid="table"/> (<include refid="insertFields"/>)

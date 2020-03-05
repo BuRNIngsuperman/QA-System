@@ -31,7 +31,7 @@ public class IndexController {
     QuestionService questionService;
 
 
-    @RequestMapping(path = {"/","/index"},method = {RequestMethod.GET,RequestMethod.POST})
+    @RequestMapping(path = {"/","/index"},method = {RequestMethod.GET})
     public String index(Model model){
         List<ViewObject> views = getViewsList(0, 0, 10);
         model.addAttribute("views",views);
