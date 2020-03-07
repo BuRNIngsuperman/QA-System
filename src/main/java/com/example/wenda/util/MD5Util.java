@@ -1,5 +1,6 @@
 package com.example.wenda.util;
 
+import com.alibaba.fastjson.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -7,6 +8,7 @@ import java.security.MessageDigest;
 
 public class MD5Util {
     private static final Logger logger = LoggerFactory.getLogger(MD5Util.class);
+
 
     public static String MD5(String key) {
         char[] hexDigits = {

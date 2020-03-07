@@ -24,4 +24,12 @@
         LIMIT #{offset},#{limit}
     </select>
 
+    <select id="getQuestionById" parameterType="int" resultType="com.example.wenda.model.Question">
+        select
+        <include refid="selectFields"></include>
+        from
+        <include refid="table"></include>
+        where id=#{id}
+    </select>
+
 </mapper>

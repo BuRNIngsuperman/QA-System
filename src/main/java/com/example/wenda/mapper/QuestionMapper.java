@@ -28,7 +28,7 @@ public interface QuestionMapper {
      */
     @Insert({"insert into ",TABLE,"(",INSERT_FIELDS,
             ") values (#{title},#{content},#{userId},#{createdDate},#{commentCount})"})
-    void addQuestion(Question question);
+    int addQuestion(Question question);
 
     /**
      * 查找最新的问题
@@ -36,6 +36,14 @@ public interface QuestionMapper {
      */
     List<Question> selectLatestQuestions(@Param("userId") int userId,
                                          @Param("offset") int offset, @Param("limit") int limit);
+
+
+    /**
+     * 根据id查询问题
+     * @param id
+     * @return
+     */
+    Question getQuestionById(int id);
 
 
 

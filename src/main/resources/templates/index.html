@@ -26,7 +26,7 @@
                                         <meta itemprop="post-id" content="113477">
                                         <meta itemprop="post-url-token" content="19831487">
                                         <h2 class="feed-title">
-                                            <a target="_blank" class="post-link" href="http://zhuanlan.zhihu.com/p/19831487">$!{view.question.title}</a></h2>
+                                            <a target="_blank" class="post-link" href="/question/$!{view.question.id}">$!{view.question.title}</a></h2>
                                         <div class="entry-body post-body js-collapse-body">
                                             <div class="zm-item-vote">
                                                 <a class="zm-item-vote-count js-expand js-vote-count" href="#" data-bind-votecount="">$!{view.user.id}</a></div>
@@ -50,18 +50,10 @@
                                         <div class="feed-meta">
                                             <div class="zm-item-meta meta clearfix js-contentActions">
                                                 <div class="zm-meta-panel">
-                                                    <a data-follow="c:link" class="zg-follow meta-item" href="#" id="cl-2180">
-                                                        <i class="z-icon-follow"></i>关注专栏</a>
+                                                    <a data-follow="q:link" class="follow-link zg-follow meta-item" href="javascript:;" id="sfb-123114">
+                                                        <i class="z-icon-follow"></i>关注问题</a>
                                                     <a href="#" class="meta-item toggle-comment js-toggleCommentBox">
                                                         <i class="z-icon-comment"></i>${view.question.commentCount} 条评论</a>
-                                                    <a href="#" class="meta-item zu-autohide js-share goog-inline-block goog-menu-button" role="button" aria-expanded="false" tabindex="0" aria-haspopup="true" style="-webkit-user-select: none;">
-                                                        <div class="goog-inline-block goog-menu-button-outer-box">
-                                                            <div class="goog-inline-block goog-menu-button-inner-box">
-                                                                <div class="goog-inline-block goog-menu-button-caption">
-                                                                    <i class="z-icon-share"></i>分享</div>
-                                                                <div class="goog-inline-block goog-menu-button-dropdown">&nbsp;</div></div>
-                                                        </div>
-                                                    </a>
                                                     <span class="zg-bull zu-autohide">•</span>
                                                     <a href="#" class="meta-item zu-autohide js-report">举报</a>
                                                     <button class="meta-item item-collapse js-collapse">
@@ -116,8 +108,8 @@
     <div class="Guide-topicsLoading">
     <span class="Spinner"></span > <p > 正在加载中 < /p></div > </div>
     <div class="Guide-TopicsFooter GaussianBlur">
-    <button class="Guide-TopicsSubmit Button Button-flatPrimary js-submit">进入牛客</button > </div></div > </script>
-    <script type="text/template" class="activate-dialog-template">< div class = "code-activate-view clearfix" > <div class = "tip" > 为了正常使用牛客的提问、回答、评论和编辑功能，请绑定你的手机或邮箱。 < /div>
+    <button class="Guide-TopicsSubmit Button Button-flatPrimary js-submit">进入论坛</button > </div></div > </script>
+    <script type="text/template" class="activate-dialog-template">< div class = "code-activate-view clearfix" > <div class = "tip" > 为了正常使用论坛的提问、回答、评论和编辑功能，请绑定你的手机或邮箱。 < /div>
     <form class="send-code">
     <div class="input-wrapper">
     <label class="info" for="account">手机或邮箱：</label > <input type = "text"name = "account"class = "text"placeholder = "手机号或邮箱"required ></div>
@@ -147,11 +139,15 @@
             "common": "https:\/\/static.zhihu.com\/static\/revved\/-\/apps\/common.ed1d17c3.js",
             "CommentApp": "https:\/\/static.zhihu.com\/static\/revved\/-\/apps\/CommentApp.2ab02258.js"
         }</script>
-    <script src="../scripts/vendor.ff76fbae.js"></script>
-    <script src="../scripts/base.fb262f0e.js"></script>
-    <script src="../scripts/common.fed5411f.js"></script>
-    <script src="../scripts/richtexteditor.aa0a4005.js" async=""></script>
-    <script src="../scripts/page-main.5d4c554d.js"></script>
+<script type="text/javascript" src="/scripts/main/jquery.js"></script>
+<script type="text/javascript" src="/scripts/main/base/base.js"></script>
+<script type="text/javascript" src="/scripts/main/base/util.js"></script>
+<script type="text/javascript" src="/scripts/main/base/event.js"></script>
+<script type="text/javascript" src="/scripts/main/component/component.js"></script>
+<script type="text/javascript" src="/scripts/main/component/popup.js"></script>
+<script type="text/javascript" src="/scripts/main/component/popupAdd.js"></script>
+<script type="text/javascript" src="/scripts/main/component/popupMsg.js"></script>
+<script type="text/javascript" src="/scripts/main/site/home.js"></script>
     <meta name="entry" content="ZH.entryHome" data-module-id="page-main">
     <script type="text/zscript" znonce="d3edc464cf014708819feffde7ddd01e"></script>
     <input type="hidden" name="_xsrf" value="21aa1c8d254df2899b23ab9afbd62a53">
