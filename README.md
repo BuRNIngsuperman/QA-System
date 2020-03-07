@@ -39,7 +39,7 @@ SpringBoot使用Mybatis进行数据库表的操作和映射
 
 编写首页前端，将用户数据和绑定的问题数据输出到前端展示
 
-## 注册登录模块
+## 注册登录登出模块
 
 ### 注册
 
@@ -50,6 +50,19 @@ SpringBoot使用Mybatis进行数据库表的操作和映射
 
 1. 服务器密码校验/三方校验回调，token登记 
 
-   1.1服务器端token关联userid 1.2客户端存储token(app存储本地，浏览器存储cookie)
+   1.1 服务器端token关联userid 
+   1.2 客户端存储token(app存储本地，浏览器存储cookie)
 
 2. 服务端/客户端token有效期设置（记住登陆）
+
+3. 拦截器设置，根据cookie中的ticket获取访问的用户信息
+
+### 登出
+
+设置cookie中ticket状态为1，view渲染登出处理
+
+> 为什么不适用session共享数据，而使用数据表来共享token/ticket
+
+这样做可以使访问多个服务器时都可以共享数据，获取用户数据的信息。
+
+### 未登录跳转

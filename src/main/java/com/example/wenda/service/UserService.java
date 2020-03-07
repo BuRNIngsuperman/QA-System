@@ -32,8 +32,8 @@ public class UserService {
      * @param password
      * @return
      */
-    public Map<String,String> register(String userName,String password){
-        Map<String,String> map = new HashMap<>();
+    public Map<String,Object> register(String userName,String password){
+        Map<String,Object> map = new HashMap<>();
 
         //判断用户名不能为空
         if(StringUtils.isBlank(userName)){
@@ -71,7 +71,9 @@ public class UserService {
         user.setPassword(MD5Util.MD5(password + user.getSalt()));
         userMapper.addUser(user);
 
-
+        // 登陆
+        String ticket = addLoginTicket(user.getId());
+        map.put("ticket", ticket);
         return map;
 
     }
@@ -83,9 +85,9 @@ public class UserService {
      * @param password
      * @return
      */
-    public Map<String,String> login(String userName,String password){
+    public Map<String,Object> login(String userName,String password){
 
-        Map<String,String> map = new HashMap<>();
+        Map<String,Object> map = new HashMap<>();
 
         //判断用户名不能为空
         if(StringUtils.isBlank(userName)){
@@ -128,6 +130,14 @@ public class UserService {
         }
 
     /**
+     * 用户登出
+     * @param ticket
+     */
+    public void logout(String ticket){
+            loginTicketMapper.updateStatus(ticket,1);
+        }
+
+    /**
      * 给登录添加token验证
      * @param userId
      * @return
@@ -144,6 +154,7 @@ public class UserService {
 
             return loginTicket.getTicket();
         }
+
 
 }
 

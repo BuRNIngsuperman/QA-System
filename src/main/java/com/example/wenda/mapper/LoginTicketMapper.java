@@ -24,7 +24,7 @@ public interface LoginTicketMapper {
     LoginTicket selectByTicket(String ticket);
 
 
-    void updateStatus(@Param("ticket") String tivket,@Param("status") int status);
+    void updateStatus(@Param("ticket") String ticket,@Param("status") int status);
 
 
 }

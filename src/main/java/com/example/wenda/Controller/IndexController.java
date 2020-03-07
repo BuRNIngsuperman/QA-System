@@ -1,5 +1,6 @@
 package com.example.wenda.Controller;
 
+import com.example.wenda.model.HostHolder;
 import com.example.wenda.model.Question;
 import com.example.wenda.model.ViewObject;
 import com.example.wenda.service.QuestionService;
@@ -31,7 +32,7 @@ public class IndexController {
     QuestionService questionService;
 
 
-    @RequestMapping(path = {"/","/index"},method = {RequestMethod.GET})
+    @RequestMapping(path = {"/","/index"},method = {RequestMethod.GET,RequestMethod.POST})
     public String index(Model model){
         List<ViewObject> views = getViewsList(0, 0, 10);
         model.addAttribute("views",views);
