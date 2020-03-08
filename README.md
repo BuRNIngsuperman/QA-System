@@ -9,6 +9,7 @@
 - MySQL
 - MyBatis
 - Redis
+- Solr
 
 ## 目录
 - [项目的基本框架及配置](#项目的基本框架及配置)
