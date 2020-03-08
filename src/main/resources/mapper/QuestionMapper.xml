@@ -26,10 +26,16 @@
 
     <select id="getQuestionById" parameterType="int" resultType="com.example.wenda.model.Question">
         select
-        <include refid="selectFields"></include>
+        <include refid="selectFields"/>
         from
-        <include refid="table"></include>
+        <include refid="table"/>
         where id=#{id}
     </select>
+
+    <update id="updateCommentCount">
+        update <include refid="table"/>
+        set comment_count=#{commentCount}
+        where id=#{id}
+    </update>
 
 </mapper>

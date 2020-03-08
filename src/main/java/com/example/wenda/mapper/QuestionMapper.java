@@ -46,6 +46,12 @@ public interface QuestionMapper {
     Question getQuestionById(int id);
 
 
+    /**
+     * 更新评论数量
+     * @param id
+     * @param commentCount
+     */
+    int updateCommentCount(@Param("id") int id, @Param("commentCount") int commentCount);
 
 
 }

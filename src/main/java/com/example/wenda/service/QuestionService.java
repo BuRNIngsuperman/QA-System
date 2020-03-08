@@ -35,4 +35,9 @@ public class QuestionService {
     public Question getQuestionById(int id){
         return questionMapper.getQuestionById(id);
     }
+
+    public int updateCommentCount(int id,int commentCount){
+
+        return questionMapper.updateCommentCount(id,commentCount);
+    }
 }

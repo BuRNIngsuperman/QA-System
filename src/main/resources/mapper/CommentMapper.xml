@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.example.wenda.mapper.CommentMapper">
+    <sql id="TableName">comment</sql>
+    <sql id="InsertFields">content,user_id,entity_id,entity_type,created_date,status</sql>
+    <sql id="SelectFields">id,content,user_id,entity_id,entity_type,created_date,status</sql>
+
+    <insert id="addComment" parameterType="com.example.wenda.model.Comment">
+        insert into
+        <include refid="TableName"/> (<include refid="InsertFields"/>)
+         values (#{content},#{userId},#{entityId},#{entityType},#{createdDate},#{status})
+    </insert>
+
+    <select id="selectCommentByEntity" resultType="com.example.wenda.model.Comment">
+        select
+        <include refid="SelectFields"/>
+        from
+        <include refid="TableName"/>
+        where entity_id=#{entityId} and entity_type=#{entityType} order by id desc
+    </select>
+
+    <select id="getCommentCount" resultType="int">
+        select count(id) from
+        <include refid="TableName"/>
+        where entity_id=#{entityId} and entity_type=#{entityType}
+    </select>
+
+    <update id="updateStatus">
+        update
+        <include refid="TableName"/>
+        set status=#{status}
+        where entity_id=#{entityId} and entity_type=#{entityType}
+    </update>
+</mapper>

@@ -1,7 +1,7 @@
 package com.example.wenda.Controller;
 
-import com.example.wenda.model.HostHolder;
-import com.example.wenda.model.Question;
+import com.example.wenda.model.*;
+import com.example.wenda.service.CommentService;
 import com.example.wenda.service.QuestionService;
 import com.example.wenda.service.UserService;
 import com.example.wenda.util.JSONUtil;
@@ -14,7 +14,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.jws.WebParam;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Controller
 public class QuestionController {
@@ -30,6 +32,9 @@ public class QuestionController {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    CommentService commentService;
 
     @RequestMapping(value = "/question/add",method = {RequestMethod.POST})
     @ResponseBody
@@ -63,8 +68,16 @@ public class QuestionController {
 
         Question question = questionService.getQuestionById(qid);
         model.addAttribute("question",question);
-        model.addAttribute("user",userService.getUser(question.getUserId()));
+        List<Comment> commentList = commentService.getCommentByEntity(qid, EntityType.ENTITY_QUESTION);
+        List<ViewObject> views = new ArrayList<>();
+        for(Comment comment : commentList){
+            ViewObject view = new ViewObject();
+            view.set("comment",comment);
+            view.set("user",userService.getUser(comment.getUserId()));
+            views.add(view);
+        }
 
+        model.addAttribute("comments",views);
         return "detail";
     }
 }
