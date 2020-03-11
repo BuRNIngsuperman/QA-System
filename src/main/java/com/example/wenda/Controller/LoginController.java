@@ -59,7 +59,7 @@ public class LoginController {
                            HttpServletResponse response){
 
         try {
-            Map<String, Object> map = userService.login(username, password);
+            Map<String, Object> map = userService.register(username, password);
 
             if (map.containsKey("ticket")) {
                 Cookie cookie = new Cookie("ticket", map.get("ticket").toString());

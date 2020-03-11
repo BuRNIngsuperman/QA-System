@@ -6,7 +6,7 @@ public class Message {
 
     private int id;
 
-    private int formId;
+    private int fromId;
 
     private int toId;
 
@@ -29,12 +29,12 @@ public class Message {
         this.id = id;
     }
 
-    public int getFormId() {
-        return formId;
+    public int getFromId() {
+        return fromId;
     }
 
-    public void setFormId(int formId) {
-        this.formId = formId;
+    public void setFromId(int fromId) {
+        this.fromId = fromId;
     }
 
     public int getToId() {
@@ -70,14 +70,11 @@ public class Message {
     }
 
     public String getConversationId() {
-        if(formId < toId){
-            return String.format("%d_%d",formId,toId);
+        if(fromId < toId){
+            return String.format("%d_%d", fromId,toId);
         }else {
-            return String.format("%d_%d",toId,formId);
+            return String.format("%d_%d",toId, fromId);
         }
     }
 
-    public void setConversationId(String conversationId) {
-        this.conversationId = conversationId;
-    }
 }

@@ -4,6 +4,42 @@
 
 <mapper namespace="com.example.wenda.mapper.MessageMapper">
     <sql id="table">message</sql>
+    <sql id="insertFields">from_id,to_id,content,created_date,has_read,conversation_id</sql>
+    <sql id="selectFields">id,from_id,to_id,content,created_date,has_read,conversation_id</sql>
 
+    <insert id="addMessage" parameterType="com.example.wenda.model.Message">
+        insert into
+        <include refid="table"></include> (<include refid="insertFields"></include>)
+         values (#{fromId},#{toId},#{content},#{createdDate},#{hasRead},#{conversationId})
+    </insert>
+
+    <select id="getConversationDetail" resultType="com.example.wenda.model.Message">
+        select
+        <include refid="selectFields"></include>
+        from
+        <include refid="table"></include>
+        where conversation_id=#{conversationId}
+        order by id desc
+        limit #{offset},#{limit}
+    </select>
+
+    <select id="getConversationList" resultType="com.example.wenda.model.Message">
+        select count(id) as id,<include refid="insertFields"/>
+        from (select * from <include refid="table"/> where from_id=#{userId} or to_id=#{userId} order by id desc) as tt
+        group by conversation_id  order by created_date desc limit #{offset}, #{limit}
+    </select>
+
+    <select id="getConversationUnreadCount" resultType="int">
+        select count(id) from
+        <include refid="table"></include>
+        where has_read=0 and to_id=#{userId} and conversation_id=#{conversationId}
+    </select>
+
+    <update id="updateConversationStatus">
+        update
+        <include refid="table"></include>
+        set has_read=1
+        where to_id=#{userId} and conversation_id=#{conversationId}
+    </update>
 
 </mapper>
