@@ -10,7 +10,7 @@
     <insert id="addMessage" parameterType="com.example.wenda.model.Message">
         insert into
         <include refid="table"></include> (<include refid="insertFields"></include>)
-         values (#{fromId},#{toId},#{content},#{createdDate},#{hasRead},#{conversationId})
+        values (#{fromId},#{toId},#{content},#{createdDate},#{hasRead},#{conversationId})
     </insert>
 
     <select id="getConversationDetail" resultType="com.example.wenda.model.Message">
