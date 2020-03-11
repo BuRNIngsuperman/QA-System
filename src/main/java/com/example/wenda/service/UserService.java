@@ -11,7 +11,6 @@ import org.omg.CosNaming.NamingContextExtPackage.StringNameHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.jws.soap.SOAPBinding;
 import java.util.*;
 
 @Service
@@ -25,11 +24,6 @@ public class UserService {
 
     public User getUser(int id){
         return userMapper.selectById(id);
-    }
-
-
-    public User getUserByName(String name){
-        return userMapper.selectByName(name);
     }
 
     /**
