@@ -5,6 +5,9 @@
     <div class="zg-wrap zu-main clearfix ">
         <ul class="letter-chatlist">
             #foreach($message in $messages)
+            <a title="message.user.name" href="/user/$!{message.user.id}">
+                $message.user.name
+            </a>
             <li id="msg-item-4009580">
                 <a class="list-head">
                     <img alt="头像" src="$message.user.headUrl">

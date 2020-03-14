@@ -21,5 +21,4 @@ public interface CommentMapper {
 
     void updateStatus(@Param("entityId") int entityId, @Param("entityType") int entityType, @Param("status") int status);
 
-
 }
