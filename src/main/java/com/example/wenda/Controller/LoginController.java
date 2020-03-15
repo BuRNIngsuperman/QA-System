@@ -1,6 +1,9 @@
 package com.example.wenda.Controller;
 
 
+import com.example.wenda.async.EventModel;
+import com.example.wenda.async.EventProducer;
+import com.example.wenda.async.EventType;
 import com.example.wenda.model.Question;
 import com.example.wenda.service.QuestionService;
 import com.example.wenda.service.UserService;
@@ -31,6 +34,9 @@ public class LoginController {
 
     @Autowired
     QuestionService questionService;
+
+    @Autowired
+    EventProducer eventProducer;
 
     /**
      * 登录注册
@@ -102,11 +108,11 @@ public class LoginController {
 
 
         try {
-            Map<String,Object> regMap = userService.login(username,password);
+            Map<String,Object> logMap = userService.login(username,password);
 
-            if(regMap.containsKey("ticket")){
+            if(logMap.containsKey("ticket")){
                 //添加token cookie信息
-                Cookie cookie = new Cookie("ticket",regMap.get("ticket").toString());
+                Cookie cookie = new Cookie("ticket",logMap.get("ticket").toString());
                 cookie.setPath("/");
 
                 if (rememberme) {
@@ -114,12 +120,16 @@ public class LoginController {
                 }
                 response.addCookie(cookie);
 
+                eventProducer.fireEvent(new EventModel(EventType.LOGIN)
+                .setExt("username",username).setExt("email","18949721107@163.com")
+                .setActorId((int)logMap.get("userId")));
+
                 if (StringUtils.isNotBlank(next)) {
                     return "redirect:" + next;
                 }
                 return "redirect:/";
             }else {
-                model.addAttribute("msg",regMap.get("msg"));
+                model.addAttribute("msg",logMap.get("msg"));
                 return "login";
             }
         }catch (Exception e){

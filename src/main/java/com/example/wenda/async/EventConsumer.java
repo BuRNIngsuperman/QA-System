@@ -42,6 +42,7 @@ public class EventConsumer implements InitializingBean , ApplicationContextAware
         Map<String, EventHandler> beans = applicationContext.getBeansOfType(EventHandler.class);
         if (beans != null) {
             for (Map.Entry<String, EventHandler> entry : beans.entrySet()) {
+
                 List<EventType> eventTypes = entry.getValue().getSupportEventTypes();
 
                 for (EventType type : eventTypes) {
@@ -58,6 +59,7 @@ public class EventConsumer implements InitializingBean , ApplicationContextAware
             public void run() {
                 while (true){
                     String key = RedisKeyUtil.getEventQueueKey();
+
                     List<String> events = jedisAdaptor.brpop(0,key);
 
                     for (String message:events){

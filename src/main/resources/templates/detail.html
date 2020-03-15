@@ -1,5 +1,5 @@
 #parse("header.html")
-<link rel="stylesheet" href="/styles/detail.css">
+<link rel="stylesheet" href="../styles/detail.css">
 <div class="zg-wrap zu-main clearfix with-indention-votebar" itemscope="" itemtype="http://schema.org/Question"
      id="zh-single-question-page" data-urltoken="36301524" role="main">
     <div class="zu-main-content">
@@ -107,10 +107,8 @@
                     </div>
                     <div class="answer-head">
                         <div class="zm-item-answer-author-info">
-                            <a class="zm-item-link-avatar avatar-link" href="" target="_blank"
-                               data-tip="p$t$yingxiaodao">
-                                <img src="$comment.user.headUrl"
-                                     class="zm-list-avatar avatar"></a>
+                            <a class="zm-item-link-avatar avatar-link" href="" target="_blank" data-tip="p$t$yingxiaodao">
+                                <img src="$comment.user.headUrl" class="zm-list-avatar avatar"></a>
                             <a class="author-link" target="_blank" href="/user/$comment.user.id">$comment.user.name</a>
                         </div>
 <!--                        <div class="zm-item-vote-info" data-votecount="28" data-za-module="VoteInfo">-->
@@ -132,7 +130,7 @@
                             <a itemprop="url" class="answer-date-link meta-item" target="_blank" href="">发布于
                                 $date.format('yyyy-MM-dd HH:mm:ss', $comment.comment.createdDate)</a>
 
-                            <!--
+
                             <a href="" name="addcomment" class="meta-item toggle-comment js-toggleCommentBox">
                                 <i class="z-icon-comment"></i>4 条评论</a>
                             <a href="" class="meta-item zu-autohide js-thank" data-thanked="false">
@@ -141,7 +139,7 @@
                             <button class="item-collapse js-collapse" style="transition: none;">
                                 <i class="z-icon-fold"></i>收起
                             </button>
-                            -->
+
                         </div>
                     </div>
                 </div>
