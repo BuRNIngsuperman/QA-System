@@ -37,4 +37,8 @@ public class CommentService {
         commentMapper.updateStatus(entityId,entutyType,1);
     }
 
+    public Comment getCommentById(int id){
+        return commentMapper.getCommentById(id);
+    }
+
 }

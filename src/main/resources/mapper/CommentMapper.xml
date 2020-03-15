@@ -33,4 +33,11 @@
         set status=#{status}
         where entity_id=#{entityId} and entity_type=#{entityType}
     </update>
+    <select id="getCommentById" resultType="com.example.wenda.model.Comment">
+        select
+        <include refid="SelectFields"/>
+        from
+        <include refid="TableName"/>
+        where id=#{id}
+    </select>
 </mapper>
