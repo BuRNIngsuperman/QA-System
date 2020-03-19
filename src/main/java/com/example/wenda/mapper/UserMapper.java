@@ -35,10 +35,9 @@ public interface UserMapper {
 
     /**
      * 更改密码
-     * @param id
+     *
      */
-    void updatePassword(@Param("password") String password,
-                        @Param("id") int id);
+    void updatePassword(User user);
 
     /**
      * 根据id删除用户
@@ -46,9 +45,4 @@ public interface UserMapper {
      */
     void deleteUserById(int id);
 
-    /**
-     * 查询所有的用户
-     * @return
-     */
-    List<User> selectAllUser();
 }

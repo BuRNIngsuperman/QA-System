@@ -120,9 +120,9 @@ public class LoginController {
                 }
                 response.addCookie(cookie);
 
-                eventProducer.fireEvent(new EventModel(EventType.LOGIN)
-                .setExt("username",username).setExt("email","18949721107@163.com")
-                .setActorId((int)logMap.get("userId")));
+//                eventProducer.fireEvent(new EventModel(EventType.LOGIN)
+//                .setExt("username",username).setExt("email","18949721107@163.com")
+//                .setActorId((int)logMap.get("userId")));
 
                 if (StringUtils.isNotBlank(next)) {
                     return "redirect:" + next;

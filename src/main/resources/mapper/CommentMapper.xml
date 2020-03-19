@@ -40,4 +40,9 @@
         <include refid="TableName"/>
         where id=#{id}
     </select>
+    <select id="getCommentCountByuserId" resultType="int">
+        select count(id) from
+        <include refid="TableName"/>
+        where user_id=#{userId}
+    </select>
 </mapper>

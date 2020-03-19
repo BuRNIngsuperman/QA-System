@@ -41,4 +41,8 @@ public class CommentService {
         return commentMapper.getCommentById(id);
     }
 
+    public int getCommentCountByUserId(int userId){
+        return commentMapper.getCommentCountByuserId(userId);
+    }
+
 }

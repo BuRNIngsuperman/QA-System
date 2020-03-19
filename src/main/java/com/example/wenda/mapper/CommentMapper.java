@@ -23,4 +23,6 @@ public interface CommentMapper {
 
     Comment getCommentById(int id);
 
+    int getCommentCountByuserId(int userId);
+
 }

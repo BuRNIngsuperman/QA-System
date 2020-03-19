@@ -8,10 +8,13 @@ import org.springframework.stereotype.Service;
 import redis.clients.jedis.BinaryClient;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
+import redis.clients.jedis.Transaction;
 
 import javax.swing.*;
 import javax.tools.Diagnostic;
+import java.io.IOException;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author Jin Qiuyang
@@ -120,5 +123,113 @@ public class JedisAdaptor implements InitializingBean {
             }
         }
         return 0;
+    }
+
+    public Jedis getJedis(){
+        return pool.getResource();
+    }
+
+    public Transaction multi(Jedis jedis){
+        try {
+            return jedis.multi();
+        }catch (Exception e){
+            logger.error("发生异常" + e.getMessage());
+        }
+        return null;
+    }
+
+    public List<Object> exec(Transaction tx, Jedis jedis){
+        try {
+            return tx.exec();
+        }catch (Exception e){
+            logger.error("发生异常" + e.getMessage());
+        }finally {
+            if(tx != null){
+                try{
+                    tx.close();
+                }catch (IOException ioe){
+                    logger.error("发生异常" + ioe.getMessage());
+                }
+            }
+            if(jedis != null){
+                jedis.close();
+            }
+        }
+        return null;
+    }
+
+    public long zadd(String key,double score,String value){
+        Jedis jedis = null;
+        try {
+            jedis = pool.getResource();
+            return jedis.zadd(key,score,value);
+        } catch (Exception e) {
+            logger.error("发生异常" + e.getMessage());
+        } finally {
+            if (jedis != null) {
+                jedis.close();
+            }
+        }
+        return 0;
+    }
+
+    public Set<String> zrange(String key, int start, int end){
+        Jedis jedis = null;
+        try {
+            jedis = pool.getResource();
+            return jedis.zrange(key,start,end);
+        } catch (Exception e) {
+            logger.error("发生异常" + e.getMessage());
+        } finally {
+            if (jedis != null) {
+                jedis.close();
+            }
+        }
+        return null;
+    }
+
+    public Set<String> zrevrange(String followerKey, int offset, int count) {
+        Jedis jedis = null;
+        try {
+            jedis = pool.getResource();
+            return jedis.zrevrange(followerKey,offset,count);
+        } catch (Exception e) {
+            logger.error("发生异常" + e.getMessage());
+        } finally {
+            if (jedis != null) {
+                jedis.close();
+            }
+        }
+        return null;
+    }
+
+    public long zcard(String key) {
+        Jedis jedis = null;
+        try {
+            jedis = pool.getResource();
+            return jedis.zcard(key);
+        } catch (Exception e) {
+            logger.error("发生异常" + e.getMessage());
+        } finally {
+            if (jedis != null) {
+                jedis.close();
+            }
+        }
+        return 0;
+    }
+
+    public Double zscore(String key,String value) {
+        Jedis jedis = null;
+        try {
+            jedis = pool.getResource();
+            return jedis.zscore(key,value);
+        } catch (Exception e) {
+            logger.error("发生异常" + e.getMessage());
+        } finally {
+            if (jedis != null) {
+                jedis.close();
+            }
+        }
+        return null;
     }
 }
