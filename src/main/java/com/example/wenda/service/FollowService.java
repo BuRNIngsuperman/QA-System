@@ -86,13 +86,13 @@ public class FollowService {
     }
 
     public long getFollowerCount(int entityType,int entityId){
-        String followeeKey = RedisKeyUtil.getFolloweeKey(entityType,entityId);
-        return jedisAdaptor.zcard(followeeKey);
-    }
-
-    public long getFolloweeCount(int entityType,int entityId){
         String followerKey = RedisKeyUtil.getFollowerKey(entityType,entityId);
         return jedisAdaptor.zcard(followerKey);
+    }
+
+    public long getFolloweeCount(int userId,int entityType){
+        String followeeKey = RedisKeyUtil.getFolloweeKey(userId,entityType);
+        return jedisAdaptor.zcard(followeeKey);
     }
 
     public boolean isFollower(int userId,int entityType,int entityId){

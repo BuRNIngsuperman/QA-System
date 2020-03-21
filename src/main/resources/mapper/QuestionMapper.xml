@@ -13,9 +13,9 @@
 
     <select id="selectLatestQuestions" resultType="com.example.wenda.model.Question">
         select
-        <include refid="selectFields"></include>
+        <include refid="selectFields"/>
         from
-        <include refid="table"></include>
+        <include refid="table"/>
 
         <if test="userId != 0">
             where user_id = #{userId}

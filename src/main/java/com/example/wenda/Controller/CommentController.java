@@ -65,7 +65,7 @@ public class CommentController {
             logger.error("添加评论失败"  + e.getMessage());
         }
 
-        return "redirect:/question/" + String.valueOf(questionId);
+        return "redirect:/question/" + questionId;
 
     }
 
