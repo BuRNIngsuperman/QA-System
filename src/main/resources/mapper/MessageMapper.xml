@@ -7,7 +7,7 @@
     <sql id="insertFields">from_id,to_id,content,created_date,has_read,conversation_id</sql>
     <sql id="selectFields">id,from_id,to_id,content,created_date,has_read,conversation_id</sql>
 
-    <insert id="addMessage" parameterType="com.example.wenda.model.Message">
+    <insert id="addMessage" useGeneratedKeys="true" keyProperty="id" parameterType="com.example.wenda.model.Message">
         insert into
         <include refid="table"></include> (<include refid="insertFields"></include>)
         values (#{fromId},#{toId},#{content},#{createdDate},#{hasRead},#{conversationId})

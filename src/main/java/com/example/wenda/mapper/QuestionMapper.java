@@ -4,6 +4,7 @@ package com.example.wenda.mapper;
 import com.example.wenda.model.Question;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
@@ -28,6 +29,7 @@ public interface QuestionMapper {
      */
     @Insert({"insert into ",TABLE,"(",INSERT_FIELDS,
             ") values (#{title},#{content},#{userId},#{createdDate},#{commentCount})"})
+    @Options(useGeneratedKeys = true, keyProperty = "id")
     int addQuestion(Question question);
 
     /**

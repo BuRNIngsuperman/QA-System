@@ -7,7 +7,7 @@
     <sql id="InsertFields">content,user_id,entity_id,entity_type,created_date,status</sql>
     <sql id="SelectFields">id,content,user_id,entity_id,entity_type,created_date,status</sql>
 
-    <insert id="addComment" parameterType="com.example.wenda.model.Comment">
+    <insert id="addComment" useGeneratedKeys="true" keyProperty="id" parameterType="com.example.wenda.model.Comment">
         insert into
         <include refid="TableName"/> (<include refid="InsertFields"/>)
          values (#{content},#{userId},#{entityId},#{entityType},#{createdDate},#{status})

@@ -76,9 +76,9 @@ public class UserService {
         user.setSalt(UUID.randomUUID().toString().substring(0,5));
         user.setPassword(MD5Util.MD5(password + user.getSalt()));
         userMapper.addUser(user);
-
         // 登陆
         String ticket = addLoginTicket(user.getId());
+        map.put("user",user);
         map.put("ticket", ticket);
         return map;
 

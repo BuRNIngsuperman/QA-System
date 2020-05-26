@@ -6,7 +6,7 @@
     <sql id="InsertFiled">user_id,ticket,expired,status</sql>
     <sql id="SelectFiled">id,user_id,ticket,expired,status</sql>
 
-    <insert id="addTicket" parameterType="com.example.wenda.model.LoginTicket">
+    <insert id="addTicket" useGeneratedKeys="true" keyProperty="id" parameterType="com.example.wenda.model.LoginTicket">
         insert into
         <include refid="table"/> (<include refid="InsertFiled"/>)
         values (#{userId},#{ticket},#{expired},#{status})

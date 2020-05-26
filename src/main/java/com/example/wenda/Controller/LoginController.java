@@ -4,7 +4,9 @@ package com.example.wenda.Controller;
 import com.example.wenda.async.EventModel;
 import com.example.wenda.async.EventProducer;
 import com.example.wenda.async.EventType;
+import com.example.wenda.model.HostHolder;
 import com.example.wenda.model.Question;
+import com.example.wenda.model.User;
 import com.example.wenda.service.QuestionService;
 import com.example.wenda.service.UserService;
 import com.example.wenda.util.MD5Util;
@@ -19,6 +21,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.jws.WebParam;
+import javax.jws.soap.SOAPBinding;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
@@ -37,6 +41,9 @@ public class LoginController {
 
     @Autowired
     EventProducer eventProducer;
+
+    @Autowired
+    HostHolder hostHolder;
 
     /**
      * 登录注册
@@ -58,9 +65,9 @@ public class LoginController {
      */
     @RequestMapping(value = "/register/",method = {RequestMethod.POST})
     public String register(Model model,
-                            @RequestParam(value = "next") String next,
+                           @RequestParam(value = "next") String next,
                            @RequestParam(value="rememberme", defaultValue = "false") boolean rememberme,
-                            @RequestParam("username") String username,
+                           @RequestParam("username") String username,
                            @RequestParam("password") String password,
                            HttpServletResponse response){
 

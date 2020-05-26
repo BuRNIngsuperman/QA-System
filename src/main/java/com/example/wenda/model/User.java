@@ -1,6 +1,9 @@
 package com.example.wenda.model;
 
 
+import com.alibaba.fastjson.annotation.JSONField;
+import com.fasterxml.jackson.annotation.JsonFilter;
+
 public class User {
     private int id;
     private String name;

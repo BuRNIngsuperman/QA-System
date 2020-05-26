@@ -4,6 +4,7 @@
 <mapper namespace="com.example.wenda.mapper.QuestionMapper">
     <sql id="table">question</sql>
     <sql id="selectFields">id, title, content, comment_count,created_date,user_id</sql>
+    <sql id="insertFields">title, content, comment_count,created_date,user_id</sql>
 
     <delete id="deleteById" parameterType="int">
         delete from

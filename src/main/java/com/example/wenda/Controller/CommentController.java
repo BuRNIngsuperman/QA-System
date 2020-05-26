@@ -10,6 +10,7 @@ import com.example.wenda.service.CommentService;
 import com.example.wenda.service.QuestionService;
 import com.example.wenda.service.SensitiveService;
 import com.example.wenda.util.JSONUtil;
+import lombok.extern.log4j.Log4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
